@@ -25,3 +25,22 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+# Podman/Docker cli
+## Compiling/Building
+Use the Dockerfile, .dockerignore along with podman to build an image. 
+`sudo podman build -t text-utils-container-image-name:0.0.0 .`
+
+Make sure the image has been stored in the local docker/podman registry repository. 
+`sudo podman images`
+
+## Running in local Container
+Run the image in a container in a background process. Forward requests on localhost:8080 to the nginx server listening on port 80. 
+`sudo podman run -t text-utils-container-name -d -p 8080:80 localhost/text-utils-container-image-name:0.0.0`
+
+Make sure the container has been build and cached locally. 
+`sudo podman container list`
+
+See that your isolated contained process/container is running. 
+`sudo podman ps`
